@@ -1,0 +1,11 @@
+bin/
+.metadata/
+.recommenders/
+.checkstyle
+.classpath
+.project
+*.iml
+out/
+.idea/
+target/
+.settings/
