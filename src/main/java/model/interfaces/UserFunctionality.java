@@ -1,4 +1,7 @@
-package model;
+package model.interfaces;
+
+import model.Subject;
+import model.Template;
 
 /**
  * Interface that shows what functionality a registered user has
@@ -11,5 +14,5 @@ public interface UserFunctionality {
 
 	void addSubject(Subject subject);
 
-	void createInvoice();
+	void addCustomTemplate(Template template);
 }

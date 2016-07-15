@@ -2,6 +2,9 @@ package model;
 
 import java.util.List;
 
+import model.interfaces.Receiver;
+import model.interfaces.Sender;
+
 /**
  * Class for all of the minimum necessary data, to create an invoice.
  *
