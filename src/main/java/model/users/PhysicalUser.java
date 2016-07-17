@@ -9,29 +9,33 @@ public class PhysicalUser extends User{
     private String egn;
 
     /**
-     * Initialize user with parameters:
-     * @param firstName first name of the user.
-     * @param lastName last name of the user.
-     * @param address address of the user.
-     * @param iban iban of the user.
-     * @param bank bank of the user.
-     * @param bic bic number of the bank.
-     * @param egn egn of the user.
+     * Initialize physical user with parameters:
+     *
+     * @param firstName    - physical user first name.
+     * @param lastName     - physical user last name.
+     * @param emailAddress - physical user email address.
+     * @param address      - physical user address.
+     * @param iban         - physical user iban.
+     * @param bank         - physical user bank name.
+     * @param bic          - physical user bic.
+     * @param egn          - physical user egn.
      */
-    public PhysicalUser(String firstName,
-                        String lastName,
-                        String address,
-                        String iban,
-                        String bank,
-                        String bic,
-                        String egn) {
-        super(firstName, lastName, address, iban, bank, bic);
+    protected PhysicalUser(String firstName,
+                           String lastName,
+                           String emailAddress,
+                           String address,
+                           String iban,
+                           String bank,
+                           String bic,
+                           String egn) {
+        super(firstName, lastName, emailAddress, address, iban, bank, bic);
         this.setEgn(egn);
     }
 
+
     /**
      * Validates egn.
-     * @param egn egn of the user.
+     * @param egn egn of the physical user.
      */
     private void setEgn(String egn) {
         this.egn = egn;
