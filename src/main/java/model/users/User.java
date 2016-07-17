@@ -1,7 +1,9 @@
-package model;
+package model.users;
 
 import java.util.Set;
 
+import model.Subject;
+import model.Template;
 import model.interfaces.Receiver;
 import model.interfaces.UserFunctionality;
 
@@ -9,11 +11,54 @@ import model.interfaces.UserFunctionality;
  * Class for representing a User logged into the site.
  *
  */
-public class User implements UserFunctionality {
+public abstract class User implements UserFunctionality {
 
 	private Set<Receiver> recievers;
 	private Set<Subject> subjects;
 	private Set<Template> customTemplates;
+
+
+
+	private String firstName;
+	private String lastName;
+	private String address;
+	private String iban;
+	private String bank;
+	private String bic;
+
+	public User(String firstName, String lastName, String address, String iban, String bank, String bic) {
+		this.setFirstName(firstName);
+		this.setLastName(lastName);
+		this.setAddress(address);
+		this.setIban(iban);
+		this.setBank(bank);
+		this.setBic(bic);
+	}
+
+	public void setFirstName(String firstName) {
+		this.firstName = firstName;
+	}
+
+	public void setLastName(String lastName) {
+		this.lastName = lastName;
+	}
+
+	public void setAddress(String address) {
+		this.address = address;
+	}
+
+	public void setBank(String bank) {
+		this.bank = bank;
+	}
+
+	public void setIban(String iban) {
+		this.iban = iban;
+	}
+
+	public void setBic(String bic) {
+		this.bic = bic;
+	}
+
 
 	/**
 	 * Adds given receiver object to the set of receivers of the user.
