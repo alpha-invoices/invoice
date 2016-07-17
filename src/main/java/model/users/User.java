@@ -18,8 +18,8 @@ abstract class User implements UserFunctionality {
 	private Set<Receiver> recievers;
 	private Set<Subject> subjects;
 	private Set<Template> customTemplates;
-	private Pattern pattern;
-	private Matcher matcher;
+	protected Pattern pattern;
+	protected Matcher matcher;
 	private String firstName;
 	private String lastName;
 	private String emailAddress;
@@ -53,7 +53,7 @@ abstract class User implements UserFunctionality {
 	 * @param firstName - user first name.
      */
 	private void setFirstName(String firstName) {
-		pattern = Pattern.compile("\\A[A-Za-z]+$");
+		pattern = Pattern.compile("\\A[A-Za-z]+\\Z");
 		matcher = pattern.matcher(firstName);
 		if (!matcher.find()){
 			throw new IllegalArgumentException("First is not correct");
@@ -66,7 +66,7 @@ abstract class User implements UserFunctionality {
 	 * @param lastName - user last name.
      */
 	private void setLastName(String lastName) {
-		pattern = Pattern.compile("\\A[A-Za-z]+$");
+		pattern = Pattern.compile("\\A[A-Za-z]+\\Z");
 		matcher = pattern.matcher(lastName);
 		if (!matcher.find()){
 			throw new IllegalArgumentException("Last is not correct");
@@ -100,7 +100,7 @@ abstract class User implements UserFunctionality {
 	 * @param iban - user IBAN.
      */
 	private void setIban(String iban) {
-		pattern = Pattern.compile("\\A[A-Za-z0-9]{22}$");
+		pattern = Pattern.compile("\\A[A-Za-z0-9]{22}\\Z");
 		matcher = pattern.matcher(iban);
 		if (!matcher.find()){
 			throw new IllegalArgumentException("Iban is not correct");
@@ -113,7 +113,7 @@ abstract class User implements UserFunctionality {
 	 * @param bic - user BIC.
      */
 	private void setBic(String bic) {
-		pattern = Pattern.compile("\\A[A-Z0-9]{8}$");
+		pattern = Pattern.compile("\\A[A-Z0-9]{8}\\Z");
 		matcher = pattern.matcher(bic);
 		if (!matcher.find()){
 			throw new IllegalArgumentException("Bic is not correct");
@@ -164,5 +164,4 @@ abstract class User implements UserFunctionality {
 			System.out.println("Trying to add null template");
 		}
 	}
-
 }

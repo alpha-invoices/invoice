@@ -1,5 +1,7 @@
 package model.users;
 
+import java.util.regex.Pattern;
+
 /**
  * This class represent physical user  witch will logged in the site.
  * Inheritance abstract class user and added egn.
@@ -20,7 +22,7 @@ public class PhysicalUser extends User{
      * @param bic          - physical user bic.
      * @param egn          - physical user egn.
      */
-    protected PhysicalUser(String firstName,
+    public PhysicalUser(String firstName,
                            String lastName,
                            String emailAddress,
                            String address,
@@ -38,6 +40,11 @@ public class PhysicalUser extends User{
      * @param egn egn of the physical user.
      */
     private void setEgn(String egn) {
+        pattern = Pattern.compile("\\A\\d{10}\\Z");
+        matcher = pattern.matcher(egn);
+        if (!matcher.find()) {
+            throw new IllegalArgumentException("Egn is not correct.");
+        }
         this.egn = egn;
     }
 }

@@ -1,5 +1,8 @@
 package model.users;
 
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
 /**
  * This class represent juridical user  witch will logged in the site.
  * Inheritance abstract class user and added company
@@ -45,6 +48,11 @@ public class JuridicalUser extends User {
      * @param zddsNumber zdds number of the juridical user.
      */
     private void setZddsNumber(String zddsNumber) {
+        pattern = Pattern.compile("\\A\\d+\\Z");
+        matcher = pattern.matcher(zddsNumber);
+        if (!matcher.find()) {
+            throw new IllegalArgumentException("ZDDS is not correct.");
+        }
         this.zddsNumber = zddsNumber;
     }
 
@@ -53,6 +61,11 @@ public class JuridicalUser extends User {
      * @param eik eik number of the juridical user.
      */
     private void setEik(String eik) {
+        pattern = Pattern.compile("\\A\\d{9}\\Z");
+        matcher = pattern.matcher(eik);
+        if (!matcher.find()) {
+            throw new IllegalArgumentException("Eik is not correct.");
+        }
         this.eik = eik;
     }
 
